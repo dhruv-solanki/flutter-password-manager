@@ -30,10 +30,8 @@ class FormInput extends StatelessWidget {
         errorStyle: TextStyle(
           color: red,
         ),
+        prefixIcon: Icon(icon),
         enabledBorder: greyInputBorder,
-        icon: Icon(
-          icon,
-        ),
         hintText: hintText,
         labelText: labelText,
       ),

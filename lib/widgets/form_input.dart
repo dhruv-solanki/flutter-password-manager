@@ -24,18 +24,13 @@ class FormInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(
-            color: green,
-          ),
+        focusedBorder: greenInputBorder,
+        errorBorder: redInputBorder,
+        focusedErrorBorder: redInputBorder,
+        errorStyle: TextStyle(
+          color: red,
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(
-            color: Colors.grey,
-          ),
-        ),
+        enabledBorder: greyInputBorder,
         icon: Icon(
           icon,
         ),

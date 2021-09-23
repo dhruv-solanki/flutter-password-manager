@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_password_manager/screens/signup_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Password Manager',
       theme: ThemeData.dark(),
-      home: Container(),
+      home: const SignUpScreen(),
     );
   }
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_password_manager/screens/dashboard_screen.dart';
 import 'package:flutter_password_manager/widgets/form_input.dart';
 import 'package:flutter_password_manager/widgets/init_button.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class LogInScreen extends StatefulWidget {
   const LogInScreen({Key? key}) : super(key: key);
@@ -13,6 +16,13 @@ class _LogInScreenState extends State<LogInScreen> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  GetStorage box = GetStorage();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +81,9 @@ class _LogInScreenState extends State<LogInScreen> {
                     InitButton(
                       text: "Login",
                       onPressed: () {
-                        if (_formKey.currentState!.validate()) {}
+                        if (_formKey.currentState!.validate()) {
+                          Get.to(const DashboardScreen());
+                        }
                       },
                     ),
                   ],

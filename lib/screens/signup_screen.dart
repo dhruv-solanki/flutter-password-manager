@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_password_manager/models/user_model.dart';
 import 'package:flutter_password_manager/screens/login_screen.dart';
 import 'package:flutter_password_manager/widgets/form_input.dart';
 import 'package:flutter_password_manager/widgets/init_button.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -17,6 +20,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  GetStorage box = GetStorage();
+
+  void storeUser() async {
+    UserModel user = UserModel(
+      name: nameController.text,
+      email: emailController.text,
+      password: passwordController.text,
+    );
+    Get.to(const LogInScreen());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,12 +100,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       text: "Let's Go",
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const LogInScreen(),
-                            ),
-                          );
+                          storeUser();
                         }
                       },
                     ),

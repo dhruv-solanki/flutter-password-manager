@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 Color green = Colors.greenAccent;
 Color red = Colors.redAccent;
 Color grey = Colors.grey;
+Color black = Colors.black26;
 
 OutlineInputBorder greenInputBorder = OutlineInputBorder(
   borderRadius: BorderRadius.circular(10),

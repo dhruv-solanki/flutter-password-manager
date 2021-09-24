@@ -27,12 +27,10 @@ class DialogBar extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             color: black,
           ),
-          child: Flexible(
-            child: SelectableText(
-              text,
-              style: const TextStyle(
-                fontSize: 18,
-              ),
+          child: SelectableText(
+            text,
+            style: const TextStyle(
+              fontSize: 18,
             ),
           ),
         ),

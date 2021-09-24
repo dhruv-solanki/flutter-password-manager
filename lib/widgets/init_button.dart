@@ -14,15 +14,18 @@ class InitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: onPressed,
-      style: TextButton.styleFrom(
-        backgroundColor: green,
-      ),
-      child: Text(
-        text,
-        style: const TextStyle(
-          color: Colors.black,
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.5,
+      child: TextButton(
+        onPressed: onPressed,
+        style: TextButton.styleFrom(
+          backgroundColor: green,
+        ),
+        child: Text(
+          text,
+          style: const TextStyle(
+            color: Colors.black,
+          ),
         ),
       ),
     );

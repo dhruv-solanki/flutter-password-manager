@@ -82,7 +82,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       text: "Login",
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          Get.to(const DashboardScreen());
+                          Get.to(DashboardScreen());
                         }
                       },
                     ),

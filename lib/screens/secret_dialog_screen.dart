@@ -56,7 +56,7 @@ class SecretDialogScreen extends StatelessWidget {
               height: 10,
             ),
             DialogBar(
-              title: 'Password',
+              title: 'Secret',
               text: item.password,
             ),
             const SizedBox(

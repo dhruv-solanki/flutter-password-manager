@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Password Manager',
       theme: ThemeData.dark(),
+      debugShowCheckedModeBanner: false,
       home: const SignUpScreen(),
     );
   }

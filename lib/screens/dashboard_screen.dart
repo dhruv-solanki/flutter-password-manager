@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_password_manager/models/secret_model.dart';
+import 'package:flutter_password_manager/controllers/secret_controller.dart';
+import 'package:flutter_password_manager/widgets/add_secret_button.dart';
 import 'package:flutter_password_manager/widgets/secret_card.dart';
+import 'package:get/get.dart';
 
 class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({Key? key}) : super(key: key);
+  DashboardScreen({Key? key}) : super(key: key);
 
-  static const secretItems = SecretModel.secrets;
+  final secretController = Get.put(SecretController());
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +18,16 @@ class DashboardScreen extends StatelessWidget {
           title: const Text(
             'Your Secrets',
           ),
+          actions: const [
+            AddSecretButton(),
+          ],
         ),
-        body: Container(
-          margin: const EdgeInsets.only(top: 5),
-          child: ListView.builder(
-            itemCount: secretItems.length,
+        body: Obx(
+          () => ListView.builder(
+            itemCount: secretController.secrets.length,
             itemBuilder: (context, index) {
               return SecretCard(
-                item: secretItems[index],
+                item: secretController.secrets[index],
               );
             },
           ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_password_manager/constants.dart';
+import 'package:flutter_password_manager/controllers/auth_controller.dart';
 import 'package:flutter_password_manager/screens/dashboard_screen.dart';
+import 'package:flutter_password_manager/screens/error_screen.dart';
 import 'package:flutter_password_manager/widgets/form_input.dart';
 import 'package:flutter_password_manager/widgets/init_button.dart';
 import 'package:get/get.dart';
@@ -19,6 +21,20 @@ class _LogInScreenState extends State<LogInScreen> {
   TextEditingController passwordController = TextEditingController();
 
   // GetStorage box = GetStorage();
+  final AuthController _authController = Get.find();
+
+  validateUser() {
+    bool validate = _authController.authenticateUser(
+      emailController.text,
+      passwordController.text,
+    );
+
+    if (validate) {
+      Get.to(DashboardScreen());
+    } else {
+      Get.to(const ErrorScreen());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +95,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       text: "Login",
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          Get.to(DashboardScreen());
+                          validateUser();
                         }
                       },
                     ),

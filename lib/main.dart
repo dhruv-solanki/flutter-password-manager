@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_password_manager/controllers/auth_controller.dart';
+import 'package:flutter_password_manager/screens/login_screen.dart';
 import 'package:flutter_password_manager/screens/signup_screen.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  await GetStorage.init().then(
+    (value) => {
+      GetStorage().write('isSignUp', false),
+    },
+  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
+  final box = GetStorage();
+
+  final _authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'Password Manager',
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: const SignUpScreen(),
+      home: box.read('isSignUp') ? const LogInScreen() : const SignUpScreen(),
     );
   }
 }

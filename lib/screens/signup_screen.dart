@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_password_manager/constants.dart';
+import 'package:flutter_password_manager/controllers/auth_controller.dart';
 import 'package:flutter_password_manager/models/user_model.dart';
 import 'package:flutter_password_manager/screens/login_screen.dart';
 import 'package:flutter_password_manager/widgets/form_input.dart';
@@ -22,7 +23,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  GetStorage box = GetStorage();
+  // GetStorage box = GetStorage();
+  final AuthController _authController = Get.find();
 
   void storeUser() async {
     UserModel user = UserModel(
@@ -30,6 +32,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
       email: emailController.text,
       password: passwordController.text,
     );
+    _authController.setSignUp(true);
+    _authController.setUser(user);
     Get.to(const LogInScreen());
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_password_manager/constants.dart';
 import 'package:flutter_password_manager/models/user_model.dart';
 import 'package:flutter_password_manager/screens/login_screen.dart';
 import 'package:flutter_password_manager/widgets/form_input.dart';
@@ -56,10 +57,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         fontSize: 25.0,
                       ),
                     ),
-                    const Text(
+                    Text(
                       'Sign up',
                       style: TextStyle(
                         fontSize: 20,
+                        color: green,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_password_manager/constants.dart';
 import 'package:flutter_password_manager/screens/dashboard_screen.dart';
 import 'package:flutter_password_manager/widgets/form_input.dart';
 import 'package:flutter_password_manager/widgets/init_button.dart';
@@ -17,12 +18,7 @@ class _LogInScreenState extends State<LogInScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  GetStorage box = GetStorage();
-
-  @override
-  void initState() {
-    super.initState();
-  }
+  // GetStorage box = GetStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +44,11 @@ class _LogInScreenState extends State<LogInScreen> {
                         fontSize: 25.0,
                       ),
                     ),
-                    const Text(
+                    Text(
                       'Log in',
                       style: TextStyle(
                         fontSize: 20,
+                        color: green,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

@@ -6,6 +6,10 @@ class SecretController extends GetxController {
     secrets.add(secret);
   }
 
+  void removeSecret(SecretModel secret) {
+    secrets.remove(secret);
+  }
+
   var secrets = [
     SecretModel(
       name: 'Google',

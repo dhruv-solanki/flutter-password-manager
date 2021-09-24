@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_password_manager/constants.dart';
 import 'package:flutter_password_manager/controllers/secret_controller.dart';
 import 'package:flutter_password_manager/widgets/add_secret_button.dart';
+import 'package:flutter_password_manager/widgets/delete_secret_card.dart';
 import 'package:flutter_password_manager/widgets/secret_card.dart';
 import 'package:get/get.dart';
 
@@ -11,25 +13,28 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: const Text(
-            'Your Secrets',
+    return WillPopScope(
+      onWillPop: () => Future.value(false),
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            title: const Text(
+              'Your Secrets',
+            ),
+            actions: const [
+              AddSecretButton(),
+            ],
           ),
-          actions: const [
-            AddSecretButton(),
-          ],
-        ),
-        body: Obx(
-          () => ListView.builder(
-            itemCount: secretController.secrets.length,
-            itemBuilder: (context, index) {
-              return SecretCard(
-                item: secretController.secrets[index],
-              );
-            },
+          body: Obx(
+            () => ListView.builder(
+              itemCount: secretController.secrets.length,
+              itemBuilder: (context, index) {
+                return DeleteSecretCard(
+                  secret: secretController.secrets[index],
+                );
+              },
+            ),
           ),
         ),
       ),

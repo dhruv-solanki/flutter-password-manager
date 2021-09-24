@@ -36,6 +36,7 @@ class SecretCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CircleAvatar(
+              maxRadius: 20,
               child: Text(
                 item.name[0].toUpperCase(),
                 style: const TextStyle(

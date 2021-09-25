@@ -6,11 +6,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 void main() async {
-  await GetStorage.init().then(
-    (value) => {
-      GetStorage().write('isSignUp', false),
-    },
-  );
+  await GetStorage.init();
   runApp(MyApp());
 }
 
@@ -27,7 +23,9 @@ class MyApp extends StatelessWidget {
       title: 'Password Manager',
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: box.read('isSignUp') ? const LogInScreen() : const SignUpScreen(),
+      home: box.read('isSignUp') ?? false
+          ? const LogInScreen()
+          : const SignUpScreen(),
     );
   }
 }

@@ -32,7 +32,7 @@ class _LogInScreenState extends State<LogInScreen> {
     if (validate) {
       Get.to(DashboardScreen());
     } else {
-      Get.to(const ErrorScreen());
+      Get.dialog(const ErrorScreen());
     }
   }
 

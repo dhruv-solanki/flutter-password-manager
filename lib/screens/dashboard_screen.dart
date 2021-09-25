@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_password_manager/constants.dart';
 import 'package:flutter_password_manager/controllers/secret_controller.dart';
 import 'package:flutter_password_manager/widgets/add_secret_button.dart';
 import 'package:flutter_password_manager/widgets/delete_secret_card.dart';
-import 'package:flutter_password_manager/widgets/secret_card.dart';
 import 'package:get/get.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -27,14 +25,23 @@ class DashboardScreen extends StatelessWidget {
             ],
           ),
           body: Obx(
-            () => ListView.builder(
-              itemCount: secretController.secrets.length,
-              itemBuilder: (context, index) {
-                return DeleteSecretCard(
-                  secret: secretController.secrets[index],
-                );
-              },
-            ),
+            () => (secretController.secrets.isNotEmpty)
+                ? ListView.builder(
+                    itemCount: secretController.secrets.length,
+                    itemBuilder: (context, index) {
+                      return DeleteSecretCard(
+                        secret: secretController.secrets[index],
+                      );
+                    },
+                  )
+                : const Center(
+                    child: Text(
+                      'Add some Secrets',
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
           ),
         ),
       ),
